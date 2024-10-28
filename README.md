@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# Тестовое задание для Sycret.ru
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб сервис для онлайн продажи подарочных сертификатов на React на REST API.
 
-Currently, two official plugins are available:
+Локальный запуск проекта:
+- `git clone git@github.com:julfy-bs/sycret.git`
+- `npm install`
+- Скопировать `.env.example` и переименовать его в `.env`
+- `npm run dev` - Приложение запущено на `http://localhost:5173/`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+[Изначальный пример реализации](https://sycret.ru/service/onlinesale/?apikey=011ba11bdcad4fa396660c2ec447ef14)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Пример не самый удачный, приведен только для наглядного понимания сути задачи.
+Предполагаем, что Вы поймете недостатки и сделаете лучше.
 
-- Configure the top-level `parserOptions` property like this:
+Сценарий работы сервиса:
+1. Первая страница: выбор сертификата.
+   Выводит список сертификатов. Список сертификатов получать при помощи метода
+   OSGetGoodList. Описание методов ниже.
+   Пользователь просматривает список и выбирает сертификат, по кнопке «Оформить»
+   попадает на страницу сбора контактов.
+2. Вторая страница: заполнение контактов.
+   Поля формы:
+   «Имя», обязательное
+   «Телефон», по маске телефона, обязательное
+   «Почта», обязательное
+   Сервис проверяет правильность заполнения полей, доступны кнопки «Назад» (обратно на
+   страницу выбора сертификата) и «Оплатить».
+   Сервис сохраняет собранные данные с помощью метода OSSale.
+3. В рамках данного задания кнопка «Оплатить» ведет на страницу-заглушку с текстом
+   «оплата…», страница нужна просто для понимания, что пользователь успешно дошел до
+   оплаты.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Требования:
+1. Язык разработки JavaScript, фреймворк React.
+2. Разрешено использовать JSX, не влияет на оценку.
+3. Адаптивная верстка (результат адекватно выглядит и на мобильном, и на
+   десктопе).
+4. Проект нужно выложить на github и прислать ссылку
+5. Сборка webpack без глобальных зависимостей (все зависимости должны быть
+   установлены локально в папку сборки, конфиг файл внутри той же папки).
+6. Предоставить возможность увидеть проект в работе. На выбор: 1) мы скопировали
+   сборку в папку на нашем сервере (сервер под управлением nginx без дополнительных
+   компонент/библиотек) пусть это будет https://sycret/папка/, через браузер открыли URL
+   папки (https://sycret/папка/), увидели проект в работе или 2) выложить на свой сервер и
+   прислать URL как посмотреть в работе через браузер).
+7. Время, отведенное на выполнение: до 7 дней.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+[Ссылка на текст тестового задания](https://sycret.ru/files/testwork/testwork_react23.pdf)

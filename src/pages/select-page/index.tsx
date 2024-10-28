@@ -1,6 +1,5 @@
 import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { FormEvent, ReactElement, useCallback, useEffect } from 'react';
 import { useNavigate, useRouteLoaderData } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -11,9 +10,7 @@ import {
 } from '../../app/store/features/certificates/certificatesSlice.ts';
 import { CertificateResponse } from '../../shared/api/settings.ts';
 import { Certificate } from '../../shared/types/certificate.ts';
-import { UIButton } from '../../shared/ui/button';
-import { UISelect } from '../../shared/ui/select';
-import styles from './style.module.scss';
+import { SelectForm } from '../../widgets/select-form';
 
 type SelectPageProps = {};
 
@@ -71,40 +68,12 @@ export function SelectPage({}: SelectPageProps): ReactElement {
 						maxWidth: '600px',
 					}}
 				>
-					<form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
-						<UISelect
-							id={'select'}
-							items={certificatesState.certificates}
-							label={'Выберите сертификат'}
-							labelId={'certificate'}
-							current={
-								certificatesState.current ? certificatesState.current : null
-							}
-							onChange={handleSelectChange}
-						/>
-						<Box className={styles.form_footer}>
-							{certificatesState.current?.SUMMA && (
-								<Box className={styles.form_price}>
-									<Typography
-										sx={{
-											textAlign: 'left',
-											fontWeight: 800,
-										}}
-									>
-										Стоимость:
-									</Typography>
-									<Typography sx={{ textAlign: 'center' }}>
-										{certificatesState.current?.SUMMA} рублей
-									</Typography>
-								</Box>
-							)}
-							<UIButton
-								type={'submit'}
-								value={'Оформить'}
-								className={styles.submit}
-							/>
-						</Box>
-					</form>
+					<SelectForm
+						certificates={certificatesState.certificates}
+						currentCertificate={certificatesState.current}
+						handleSubmit={handleSubmit}
+						handleSelectChange={handleSelectChange}
+					/>
 				</Box>
 			)}
 		</>
