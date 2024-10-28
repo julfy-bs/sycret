@@ -2,6 +2,11 @@
 
 Веб сервис для онлайн продажи подарочных сертификатов на React на REST API.
 
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/2b628dc1-8fd0-4ef6-b6d5-5f6ed51371fa">
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/b9ea1dd3-ff31-43ea-b77c-57473ae46812">
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/b22c4e26-c514-45ca-9c2d-811f85998413">
+
+
 Локальный запуск проекта:
 - `git clone git@github.com:julfy-bs/sycret.git`
 - `npm install`
