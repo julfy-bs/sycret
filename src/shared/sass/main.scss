@@ -1,0 +1,29 @@
+@use './_variables' as *;
+
+:root {
+	min-width: 100%;
+	margin: 0 auto;
+	font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	width: 100%;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0 auto;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+#root {
+	min-width: 100%;
+	margin: 0 auto;
+	height: 100%;
+}
+
+html,
+body {
+	height: 100%;
+}
